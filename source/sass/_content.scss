@@ -1,0 +1,303 @@
+$color-brand: #4A90E2;
+$color-content: #F2F2F2;
+$color-bg: #E1E1E1;
+$color-starContent: #FFF2DC;
+$color-border: #C8C8C8;
+$color-starChecked: #F5A623;
+$color-taskStarChecked: #FFF2DC;
+$color-information: #757575;
+
+@mixin fontAwesome($unicode, $size, $weight) {
+    content: $unicode;
+    font-family: 'Font Awesome 5 Free';
+    font-size: $size;
+    font-weight: $weight;
+}
+
+// content---------------------------------
+.content {
+    width: 620px;
+    margin: 0 auto;
+}
+
+.addTaskBlank {
+    margin-top: 24px;
+    .addTask {
+        padding: 0 0 0 20px;
+        height: 65px;
+        width: 100%;
+        border: 1px solid $color-border;
+        border-radius: 5px;
+        outline: none;
+        font-size: 24px;
+    }
+    .addTaskPanel {
+        display: none;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+}
+
+.addTaskPanel_bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 76px;
+    padding: 15px 32px;
+    background-color: $color-content;
+    border-bottom: 1px solid $color-border;
+    &::before {
+        @include fontAwesome('\f0dc', 20px, 900);
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        color: $color-information;
+    }
+    &.isStar {
+        background-color: $color-taskStarChecked;
+    }
+    input[type="checkbox"] {
+        margin-right: 20px;
+        transform: scale(1.5);
+    }
+    input[type="text"] {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        width: 80%;
+        font-size: 24px;
+        &.isCompleted {
+            text-decoration: line-through;
+        }
+    }
+    .star {
+        position: relative;
+        appearance: none;
+        outline: none;
+        cursor: pointer;
+        &::after {
+            @include fontAwesome('\f005', 18px, 400);
+        }
+    }
+    .edit {
+        position: relative;
+        margin-left: 20px;
+        cursor: pointer;
+        &.opened::after {
+            @include fontAwesome('\f303', 24px, 900);
+            color: $color-brand;
+        }
+    }
+}
+
+.addTaskPanel_content {
+    position: relative;
+    height: 443px;
+    background-color: $color-content;
+    padding: 24px 0 0 72px;
+    .deadline {
+        display: flex;
+        .icon::after {
+            @include fontAwesome('\f073', 15px, 400);
+            margin-right: 10px;
+        }
+        input {
+            width: 162px;
+            height: 35px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            margin: 10px 10px 0 0;
+            padding: 0 10px;
+        }
+    }
+    .file {
+        display: flex;
+        margin-top: 22px;
+        .icon::after {
+            @include fontAwesome('\f15b', 15px, 400);
+            margin-right: 10px;
+        }
+        label {
+            display: block;
+            margin-top: 11px;
+            cursor: pointer;
+        }
+        .fileUploadIcon::after {
+            @include fontAwesome('\f0fe', 32px, 600);
+            color: $color-border;
+        }
+    } 
+    .comment {
+        display: flex;
+        margin-top: 22px;
+        .icon::after {
+            @include fontAwesome('\f4ad', 15px, 400);
+            margin-right: 10px;
+        }
+        textarea {
+            margin-top: 10px;
+            width: 445px;
+            padding: 8px 16px;
+            outline: none;
+            border: 5px;
+            font-size: 20px;
+            &::-webkit-input-placeholder {
+                font-size: 20px;
+                color: $color-border;
+            }
+        }
+    }
+    .buttons {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        .btn {
+            width: 310px;
+            height: 60px;
+            cursor: pointer;
+        }
+        .cancelBtn {
+            color: red;
+            background-color: #fff;
+            text-align: center;
+            line-height: 60px;
+        }
+        .addTaskBtn {
+            color: white;
+            background-color: $color-brand;
+            text-align: center;
+            line-height: 60px;
+        }
+    }
+}
+
+.tasks_list {
+    & > * {
+        margin-top: 10px;
+    }
+    .addTaskPanel_content {
+        display: none;
+        &.opened {
+            display: block;
+        }
+        .saveTaskBtn {
+            color: white;
+            background-color: $color-brand;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .addTaskPanel_bar.checked {
+        background-color: $color-taskStarChecked;
+    }
+    .addTaskPanel_bar {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; 
+        height: 76px;
+        padding: 15px 32px;
+        background-color: $color-content;
+        border-bottom: 1px solid $color-border;
+        &.isStar {
+            background-color: $color-taskStarChecked;
+        }
+        input[type="checkbox"] {
+            margin-right: 20px;
+        }
+        input[type="text"] {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            width: 80%;
+            font-size: 24px;
+            padding-bottom: 10px;
+            &.isCompleted {
+                text-decoration: line-through;
+            }
+        }
+        input[type="checkbox"].completed {
+            transform: translateY(15px) scale(1.5);
+        }
+        input[type="checkbox"].star {
+            position: relative;
+            appearance: none;
+            outline: none;
+            transform: translateY(15px) scale(1.5);
+            cursor: pointer;
+            &::after {
+                @include fontAwesome('\f005', 18px, 400);
+            }
+            &.checked::after {
+                @include fontAwesome('\f005', 18px, 600);
+                color: $color-starChecked;
+            }
+        }
+        .edit {
+            position: relative;
+            margin-left: 20px;
+            transform: translateY(13px) scale(1.1);
+            cursor: pointer;
+            &::after {
+                @include fontAwesome('\f303', 24px, 900);
+            }
+            &.opened::after {
+                @include fontAwesome('\f303', 24px, 900);
+                color: $color-brand;
+            }
+        }
+        .main {
+            a {
+                position: absolute;
+                display: block;
+                width: 30px;
+                height: 30px;
+                text-decoration: none;
+                background-color: red;
+                color: white;
+                text-align: center;
+                line-height: 30px;
+                left: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+        .information {
+            position: relative;
+            & > * {
+                color: $color-information;
+            }
+            & > *:nth-child(2) {
+                position: absolute;
+                left: 150px;
+                & > span {
+                    text-overflow: ellipsis;
+                    width: 80px;
+                    white-space: nowrap;
+                    display: inline-block;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}
+
+.task_left {
+    color: $color-border;
+    font-size: 28px;
+    margin-top: 10px;
+    display: block;
+}
+
+.main {
+    display: flex;
+}
+
+.information {
+    display: flex;
+    margin-left: 37px;
+}
