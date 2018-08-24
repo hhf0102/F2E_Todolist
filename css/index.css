@@ -1,0 +1,349 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+html {
+  background: #E1E1E1;
+  box-sizing: border-box; }
+
+*, *::before, *::after {
+  box-sizing: inherit; }
+
+header {
+  width: 100%;
+  height: 76px;
+  background-color: #4A90E2;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  header ul {
+    display: flex;
+    height: 100%;
+    line-height: 76px; }
+    header ul li {
+      width: 220px;
+      text-align: center;
+      display: block;
+      cursor: pointer;
+      border-bottom: 5px solid transparent; }
+      header ul li.active {
+        color: white;
+        border-color: #00408B; }
+
+.content {
+  width: 620px;
+  margin: 0 auto; }
+
+.addTaskBlank {
+  margin-top: 24px; }
+  .addTaskBlank .addTask {
+    padding: 0 0 0 20px;
+    height: 65px;
+    width: 100%;
+    border: 1px solid #C8C8C8;
+    border-radius: 5px;
+    outline: none;
+    font-size: 24px; }
+  .addTaskBlank .addTaskPanel {
+    display: none;
+    border-radius: 5px;
+    overflow: hidden; }
+
+.addTaskPanel_bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 76px;
+  padding: 15px 32px;
+  background-color: #F2F2F2;
+  border-bottom: 1px solid #C8C8C8; }
+  .addTaskPanel_bar::before {
+    content: "";
+    font-family: 'Font Awesome 5 Free';
+    font-size: 20px;
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    color: #757575; }
+  .addTaskPanel_bar.isStar {
+    background-color: #FFF2DC; }
+  .addTaskPanel_bar input[type="checkbox"] {
+    margin-right: 20px;
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5); }
+  .addTaskPanel_bar input[type="text"] {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 80%;
+    font-size: 24px; }
+    .addTaskPanel_bar input[type="text"].isCompleted {
+      text-decoration: line-through; }
+  .addTaskPanel_bar .star {
+    position: relative;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    outline: none;
+    cursor: pointer; }
+    .addTaskPanel_bar .star::after {
+      content: "";
+      font-family: 'Font Awesome 5 Free';
+      font-size: 18px;
+      font-weight: 400; }
+  .addTaskPanel_bar .edit {
+    position: relative;
+    margin-left: 20px;
+    cursor: pointer; }
+    .addTaskPanel_bar .edit.opened::after {
+      content: "";
+      font-family: 'Font Awesome 5 Free';
+      font-size: 24px;
+      font-weight: 900;
+      color: #4A90E2; }
+
+.addTaskPanel_content {
+  position: relative;
+  height: 443px;
+  background-color: #F2F2F2;
+  padding: 24px 0 0 72px; }
+  .addTaskPanel_content .deadline {
+    display: flex; }
+    .addTaskPanel_content .deadline .icon::after {
+      content: "";
+      font-family: 'Font Awesome 5 Free';
+      font-size: 15px;
+      font-weight: 400;
+      margin-right: 10px; }
+    .addTaskPanel_content .deadline input {
+      width: 162px;
+      height: 35px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      margin: 10px 10px 0 0;
+      padding: 0 10px; }
+  .addTaskPanel_content .file {
+    display: flex;
+    margin-top: 22px; }
+    .addTaskPanel_content .file .icon::after {
+      content: "";
+      font-family: 'Font Awesome 5 Free';
+      font-size: 15px;
+      font-weight: 400;
+      margin-right: 10px; }
+    .addTaskPanel_content .file label {
+      display: block;
+      margin-top: 11px;
+      cursor: pointer; }
+    .addTaskPanel_content .file .fileUploadIcon::after {
+      content: "";
+      font-family: 'Font Awesome 5 Free';
+      font-size: 32px;
+      font-weight: 600;
+      color: #C8C8C8; }
+  .addTaskPanel_content .comment {
+    display: flex;
+    margin-top: 22px; }
+    .addTaskPanel_content .comment .icon::after {
+      content: "";
+      font-family: 'Font Awesome 5 Free';
+      font-size: 15px;
+      font-weight: 400;
+      margin-right: 10px; }
+    .addTaskPanel_content .comment textarea {
+      margin-top: 10px;
+      width: 445px;
+      padding: 8px 16px;
+      outline: none;
+      border: 5px;
+      font-size: 20px; }
+      .addTaskPanel_content .comment textarea::-webkit-input-placeholder {
+        font-size: 20px;
+        color: #C8C8C8; }
+  .addTaskPanel_content .buttons {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0; }
+    .addTaskPanel_content .buttons .btn {
+      width: 310px;
+      height: 60px;
+      cursor: pointer; }
+    .addTaskPanel_content .buttons .cancelBtn {
+      color: red;
+      background-color: #fff;
+      text-align: center;
+      line-height: 60px; }
+    .addTaskPanel_content .buttons .addTaskBtn {
+      color: white;
+      background-color: #4A90E2;
+      text-align: center;
+      line-height: 60px; }
+
+.tasks_list > * {
+  margin-top: 10px; }
+
+.tasks_list .addTaskPanel_content {
+  display: none; }
+  .tasks_list .addTaskPanel_content.opened {
+    display: block; }
+  .tasks_list .addTaskPanel_content .saveTaskBtn {
+    color: white;
+    background-color: #4A90E2;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+
+.tasks_list .addTaskPanel_bar.checked {
+  background-color: #FFF2DC; }
+
+.tasks_list .addTaskPanel_bar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 76px;
+  padding: 15px 32px;
+  background-color: #F2F2F2;
+  border-bottom: 1px solid #C8C8C8; }
+  .tasks_list .addTaskPanel_bar.isStar {
+    background-color: #FFF2DC; }
+  .tasks_list .addTaskPanel_bar input[type="checkbox"] {
+    margin-right: 20px; }
+  .tasks_list .addTaskPanel_bar input[type="text"] {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 80%;
+    font-size: 24px;
+    padding-bottom: 10px; }
+    .tasks_list .addTaskPanel_bar input[type="text"].isCompleted {
+      text-decoration: line-through; }
+  .tasks_list .addTaskPanel_bar input[type="checkbox"].completed {
+    -webkit-transform: translateY(15px) scale(1.5);
+            transform: translateY(15px) scale(1.5); }
+  .tasks_list .addTaskPanel_bar input[type="checkbox"].star {
+    position: relative;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    outline: none;
+    -webkit-transform: translateY(15px) scale(1.5);
+            transform: translateY(15px) scale(1.5);
+    cursor: pointer; }
+    .tasks_list .addTaskPanel_bar input[type="checkbox"].star::after {
+      content: "";
+      font-family: 'Font Awesome 5 Free';
+      font-size: 18px;
+      font-weight: 400; }
+    .tasks_list .addTaskPanel_bar input[type="checkbox"].star.checked::after {
+      content: "";
+      font-family: 'Font Awesome 5 Free';
+      font-size: 18px;
+      font-weight: 600;
+      color: #F5A623; }
+  .tasks_list .addTaskPanel_bar .edit {
+    position: relative;
+    margin-left: 20px;
+    -webkit-transform: translateY(13px) scale(1.1);
+            transform: translateY(13px) scale(1.1);
+    cursor: pointer; }
+    .tasks_list .addTaskPanel_bar .edit::after {
+      content: "";
+      font-family: 'Font Awesome 5 Free';
+      font-size: 24px;
+      font-weight: 900; }
+    .tasks_list .addTaskPanel_bar .edit.opened::after {
+      content: "";
+      font-family: 'Font Awesome 5 Free';
+      font-size: 24px;
+      font-weight: 900;
+      color: #4A90E2; }
+  .tasks_list .addTaskPanel_bar .main a {
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    text-decoration: none;
+    background-color: red;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    left: 100%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
+  .tasks_list .addTaskPanel_bar .information {
+    position: relative; }
+    .tasks_list .addTaskPanel_bar .information > * {
+      color: #757575; }
+    .tasks_list .addTaskPanel_bar .information > *:nth-child(2) {
+      position: absolute;
+      left: 150px; }
+      .tasks_list .addTaskPanel_bar .information > *:nth-child(2) > span {
+        text-overflow: ellipsis;
+        width: 80px;
+        white-space: nowrap;
+        display: inline-block;
+        overflow: hidden; }
+
+.task_left {
+  color: #C8C8C8;
+  font-size: 28px;
+  margin-top: 10px;
+  display: block; }
+
+.main {
+  display: flex; }
+
+.information {
+  display: flex;
+  margin-left: 37px; }

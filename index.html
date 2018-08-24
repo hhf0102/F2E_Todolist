@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>TodoList</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"/>
+    <link href="./css/index.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <header>
+      <ul class="list">
+        <li data-mode="all" class="active">My Tasks</li>
+        <li data-mode="progress">In Progress</li>
+        <li data-mode="completed">Completed</li>
+      </ul>
+    </header>
+    <div class="content">
+      <div class="addTaskBlank">
+        <input type="text" placeholder="+ Add Task" class="addTask"/>
+        <div class="addTaskPanel">
+          <div class="addTaskPanel_bar">
+            <input type="checkbox" disabled="disabled"/>
+            <input type="text" placeholder="Type Something Here..." maxlength="30"/>
+            <input type="checkbox" disabled="disabled" class="star"/>
+            <div class="edit"></div>
+          </div>
+          <div class="addTaskPanel_content">
+            <div class="deadline">
+              <div class="icon"></div>
+              <div>Deadline<br/>
+                <input type="date" placeholder="yyyy/mm/dd"/>
+                <input type="time" placeholder="hh:mm"/>
+              </div>
+            </div>
+            <div class="file">
+              <div class="icon"></div>
+              <div>File<br/>
+                <input type="file" id="fileUpload" hidden="hidden"/>
+                <label for="fileUpload" class="fileUploadIcon"></label>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="icon"></div>
+              <div>Comment<br/>
+                <textarea rows="5" placeholder="Type your memo here..."></textarea>
+              </div>
+            </div>
+            <div class="buttons">
+              <div class="btn cancelBtn">X Cancel</div>
+              <div class="btn addTaskBtn">+ Add Task</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul class="tasks_list"></ul><span class="task_left"></span>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./js/jquery-ui.min.js"></script>
+    <script src="./js/all.js"></script>
+  </body>
+</html>
